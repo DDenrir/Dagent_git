@@ -1,51 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap');
+
 :root {
-  /* Brand Colors */
-  --primary-hue: 250;
-  --primary-sat: 100%;
-  --primary-lit: 60%;
-  --primary: hsl(var(--primary-hue), var(--primary-sat), var(--primary-lit));
-  --primary-foreground: hsl(0, 0%, 100%);
+  /* "June Rain" (Hydrangea) Palette */
+  --primary-color: #5f5baf;
+  /* Misty Violet - Main Brand Color */
+  --primary-dark: #4a478a;
+  /* Darker Violet */
+  --primary-light: #c4c5e8;
+  /* Cloudy Lilac - Backgrounds/Hovers */
 
-  /* Background & Foreground */
-  --background: hsl(0, 0%, 100%);
-  --foreground: hsl(240, 10%, 3.9%);
+  --secondary-color: #568de4;
+  /* Rainy Blue - Secondary Action */
 
-  /* Secondary */
-  --secondary: hsl(240, 4.8%, 95.9%);
-  --secondary-foreground: hsl(240, 5.9%, 10%);
+  --accent-purple: #9a64c5;
+  /* Rain Purple */
+  --accent-lilac: #ba9fe1;
+  /* Light Purple */
 
-  /* Muted */
-  --muted: hsl(240, 4.8%, 95.9%);
-  --muted-foreground: hsl(240, 3.8%, 46.1%);
+  /* Backgrounds */
+  --bg-color: #F8F8FD;
+  /* Very light cool white/lilac tint */
+  --card-bg: #FFFFFF;
+  /* Pure White */
 
-  /* Accent */
-  --accent: hsl(240, 4.8%, 95.9%);
-  --accent-foreground: hsl(240, 5.9%, 10%);
+  /* Text */
+  --text-primary: #2d2d42;
+  /* Dark Navy/Grey for better contrast with violet */
+  --text-secondary: #5f5baf;
+  /* Use Primary for headers/secondary text */
+  --text-light: #9fa0c3;
+  /* Light cool grey */
 
-  /* Borders */
-  --border: hsl(240, 5.9%, 90%);
-  --input: hsl(240, 5.9%, 90%);
-  --ring: hsl(240, 5%, 64.9%);
-
-  /* Radius */
-  --radius: 0.5rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: hsl(240, 10%, 3.9%);
-    --foreground: hsl(0, 0%, 98%);
-    --primary: hsl(var(--primary-hue), var(--primary-sat), 70%);
-    --secondary: hsl(240, 3.7%, 15.9%);
-    --secondary-foreground: hsl(0, 0%, 98%);
-    --muted: hsl(240, 3.7%, 15.9%);
-    --muted-foreground: hsl(240, 5%, 64.9%);
-    --accent: hsl(240, 3.7%, 15.9%);
-    --accent-foreground: hsl(0, 0%, 98%);
-    --border: hsl(240, 3.7%, 15.9%);
-    --input: hsl(240, 3.7%, 15.9%);
-    --ring: hsl(240, 4.9%, 83.9%);
-  }
+  /* UI Elements */
+  --border-radius: 20px;
+  --box-shadow: 0 4px 15px rgba(95, 91, 175, 0.08);
+  /* Colored shadow */
+  --box-shadow-hover: 0 10px 30px rgba(95, 91, 175, 0.15);
 }
 
 * {
@@ -58,36 +49,31 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: 1.5;
+  font-family: 'Prompt', 'Sarabun', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  line-height: 1.6;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-  transition: color 0.2s ease;
 }
 
-a:hover {
-  color: var(--primary);
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  letter-spacing: -0.025em;
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
 }
 
-button {
-  cursor: pointer;
-  border: none;
-  background: none;
-  font-family: inherit;
+::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
+  border-radius: 4px;
 }
 
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-lilac);
+}
