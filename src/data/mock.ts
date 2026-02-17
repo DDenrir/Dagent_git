@@ -1,134 +1,133 @@
-
-import { User, Project, NewsItem, Publication, IntellectualProperty } from "@/types";
+import { User, Project, NewsItem, Publication, IntellectualProperty } from '@/types';
 
 // Mock Users
 export const mockUsers: User[] = [
-    {
-        id: "u1",
-        username: "admin_staff",
-        email: "staff@pcru.ac.th",
-        role: "admin",
-        fullName: "เจ้าหน้าที่ สวพ.",
-        position: "นักวิชาการคอมพิวเตอร์",
-        createdAt: "2024-01-01T08:00:00Z"
-    },
-    {
-        id: "u2",
-        username: "dr_somchai",
-        email: "somchai@pcru.ac.th",
-        role: "researcher",
-        fullName: "ผศ.ดร.สมชาย ใจดี",
-        position: "อาจารย์ประจำคณะวิทยาศาสตร์",
-        faculty: "คณะวิทยาศาสตร์และเทคโนโลยี",
-        createdAt: "2024-01-15T09:00:00Z"
-    },
-    {
-        id: "u3",
-        username: "dr_suda",
-        email: "suda@pcru.ac.th",
-        role: "researcher",
-        fullName: "ดร.สุดา รักเรียน",
-        position: "อาจารย์ประจำคณะครุศาสตร์",
-        faculty: "คณะครุศาสตร์",
-        createdAt: "2024-02-01T10:00:00Z"
-    }
+  {
+    id: 'u1',
+    username: 'admin_staff',
+    email: 'staff@pcru.ac.th',
+    role: 'admin',
+    fullName: 'เจ้าหน้าที่ สวพ.',
+    position: 'นักวิชาการคอมพิวเตอร์',
+    createdAt: '2024-01-01T08:00:00Z',
+  },
+  {
+    id: 'u2',
+    username: 'dr_somchai',
+    email: 'somchai@pcru.ac.th',
+    role: 'researcher',
+    fullName: 'ผศ.ดร.สมชาย ใจดี',
+    position: 'อาจารย์ประจำคณะวิทยาศาสตร์',
+    faculty: 'คณะวิทยาศาสตร์และเทคโนโลยี',
+    createdAt: '2024-01-15T09:00:00Z',
+  },
+  {
+    id: 'u3',
+    username: 'dr_suda',
+    email: 'suda@pcru.ac.th',
+    role: 'researcher',
+    fullName: 'ดร.สุดา รักเรียน',
+    position: 'อาจารย์ประจำคณะครุศาสตร์',
+    faculty: 'คณะครุศาสตร์',
+    createdAt: '2024-02-01T10:00:00Z',
+  },
 ];
 
 // Mock Projects
 export const mockProjects: Project[] = [
-    {
-        id: "p1",
-        title: "โครงการพัฒนาศักยภาพนักวิจัยรุ่นใหม่ (Young Researcher Development)",
-        description: "โครงการอบรมและส่งเสริมศักยภาพนักวิจัยรุ่นใหม่เพื่อการตีพิมพ์ระดับนานาชาติ",
-        budgetTotal: 1500000,
-        budgetDisbursed: 0,
-        budgetRemaining: 1500000,
-        status: "planned",
-        fiscalYear: 2569,
-        category: "วิจัย",
-        researcherId: "u2",
-        createdAt: "2024-10-01T00:00:00Z",
-        updatedAt: "2024-10-01T00:00:00Z"
-    },
-    {
-        id: "p2",
-        title: "โครงการยกระดับผลิตภัณฑ์ชุมชนด้วยนวัตกรรม (OTOP Innovation)",
-        description: "การนำนวัตกรรมมาใช้ในการแปรรูปและออกแบบบรรจุภัณฑ์สินค้า OTOP",
-        budgetTotal: 850000,
-        budgetDisbursed: 200000,
-        budgetRemaining: 650000,
-        status: "ongoing",
-        fiscalYear: 2569,
-        category: "บริการวิชาการ",
-        researcherId: "u3",
-        createdAt: "2024-10-05T00:00:00Z",
-        updatedAt: "2024-11-01T00:00:00Z"
-    },
-    {
-        id: "p3",
-        title: "โครงการจัดการองค์ความรู้เพื่อการพัฒนาท้องถิ่น (KM for Local Development)",
-        budgetTotal: 500000,
-        budgetDisbursed: 500000,
-        budgetRemaining: 0,
-        status: "completed",
-        fiscalYear: 2568,
-        category: "ทำนุบำรุงศิลปวัฒนธรรม",
-        researcherId: "u2",
-        createdAt: "2023-10-01T00:00:00Z",
-        updatedAt: "2024-09-30T00:00:00Z"
-    },
-    {
-        id: "p4",
-        title: "โครงการวิจัยและพัฒนาพืชสมุนไพรเพื่อสุขภาพ (Herbal R&D)",
-        budgetTotal: 450000,
-        budgetDisbursed: 0,
-        budgetRemaining: 450000,
-        status: "planned",
-        fiscalYear: 2569,
-        category: "วิจัย",
-        researcherId: "u3",
-        createdAt: "2024-10-10T00:00:00Z",
-        updatedAt: "2024-10-10T00:00:00Z"
-    },
-    {
-        id: "p5",
-        title: "โครงการส่งเสริมการท่องเที่ยวเชิงวัฒนธรรม (Cultural Tourism)",
-        budgetTotal: 300000,
-        budgetDisbursed: 0,
-        budgetRemaining: 300000,
-        status: "planned",
-        fiscalYear: 2569,
-        category: "บริการวิชาการ",
-        researcherId: "u2",
-        createdAt: "2024-10-15T00:00:00Z",
-        updatedAt: "2024-10-15T00:00:00Z"
-    }
+  {
+    id: 'p1',
+    title: 'โครงการพัฒนาศักยภาพนักวิจัยรุ่นใหม่ (Young Researcher Development)',
+    description: 'โครงการอบรมและส่งเสริมศักยภาพนักวิจัยรุ่นใหม่เพื่อการตีพิมพ์ระดับนานาชาติ',
+    budgetTotal: 1500000,
+    budgetDisbursed: 0,
+    budgetRemaining: 1500000,
+    status: 'planned',
+    fiscalYear: 2569,
+    category: 'วิจัย',
+    researcherId: 'u2',
+    createdAt: '2024-10-01T00:00:00Z',
+    updatedAt: '2024-10-01T00:00:00Z',
+  },
+  {
+    id: 'p2',
+    title: 'โครงการยกระดับผลิตภัณฑ์ชุมชนด้วยนวัตกรรม (OTOP Innovation)',
+    description: 'การนำนวัตกรรมมาใช้ในการแปรรูปและออกแบบบรรจุภัณฑ์สินค้า OTOP',
+    budgetTotal: 850000,
+    budgetDisbursed: 200000,
+    budgetRemaining: 650000,
+    status: 'ongoing',
+    fiscalYear: 2569,
+    category: 'บริการวิชาการ',
+    researcherId: 'u3',
+    createdAt: '2024-10-05T00:00:00Z',
+    updatedAt: '2024-11-01T00:00:00Z',
+  },
+  {
+    id: 'p3',
+    title: 'โครงการจัดการองค์ความรู้เพื่อการพัฒนาท้องถิ่น (KM for Local Development)',
+    budgetTotal: 500000,
+    budgetDisbursed: 500000,
+    budgetRemaining: 0,
+    status: 'completed',
+    fiscalYear: 2568,
+    category: 'ทำนุบำรุงศิลปวัฒนธรรม',
+    researcherId: 'u2',
+    createdAt: '2023-10-01T00:00:00Z',
+    updatedAt: '2024-09-30T00:00:00Z',
+  },
+  {
+    id: 'p4',
+    title: 'โครงการวิจัยและพัฒนาพืชสมุนไพรเพื่อสุขภาพ (Herbal R&D)',
+    budgetTotal: 450000,
+    budgetDisbursed: 0,
+    budgetRemaining: 450000,
+    status: 'planned',
+    fiscalYear: 2569,
+    category: 'วิจัย',
+    researcherId: 'u3',
+    createdAt: '2024-10-10T00:00:00Z',
+    updatedAt: '2024-10-10T00:00:00Z',
+  },
+  {
+    id: 'p5',
+    title: 'โครงการส่งเสริมการท่องเที่ยวเชิงวัฒนธรรม (Cultural Tourism)',
+    budgetTotal: 300000,
+    budgetDisbursed: 0,
+    budgetRemaining: 300000,
+    status: 'planned',
+    fiscalYear: 2569,
+    category: 'บริการวิชาการ',
+    researcherId: 'u2',
+    createdAt: '2024-10-15T00:00:00Z',
+    updatedAt: '2024-10-15T00:00:00Z',
+  },
 ];
 
 // Mock News
 export const mockNews: NewsItem[] = [
-    {
-        id: "n1",
-        title: "ประกาศทุนวิจัยรายได้ ปีงบประมาณ 2569",
-        excerpt: "สถาบันวิจัยและพัฒนา เปิดรับข้อเสนอโครงการวิจัย...",
-        content: "รายละเอียดการรับสมัครทุน...",
-        publishedDate: "2024-10-01",
-        isFeatured: true
-    },
-    {
-        id: "n2",
-        title: "กิจกรรมอบรมการเขียนบทความวิจัย",
-        excerpt: "ขอเชิญคณาจารย์และนักวิจัยเข้าร่วมอบรม...",
-        content: "รายละเอียดกิจกรรม...",
-        publishedDate: "2024-10-15",
-        isFeatured: true
-    },
-    {
-        id: "n3",
-        title: "ผลการพิจารณาทุนวิจัยงวดที่ 1",
-        excerpt: "ประกาศผลการพิจารณาทุนวิจัย...",
-        content: "รายชื่อผู้ได้รับทุน...",
-        publishedDate: "2024-10-20",
-        isFeatured: false
-    }
+  {
+    id: 'n1',
+    title: 'ประกาศทุนวิจัยรายได้ ปีงบประมาณ 2569',
+    excerpt: 'สถาบันวิจัยและพัฒนา เปิดรับข้อเสนอโครงการวิจัย...',
+    content: 'รายละเอียดการรับสมัครทุน...',
+    publishedDate: '2024-10-01',
+    isFeatured: true,
+  },
+  {
+    id: 'n2',
+    title: 'กิจกรรมอบรมการเขียนบทความวิจัย',
+    excerpt: 'ขอเชิญคณาจารย์และนักวิจัยเข้าร่วมอบรม...',
+    content: 'รายละเอียดกิจกรรม...',
+    publishedDate: '2024-10-15',
+    isFeatured: true,
+  },
+  {
+    id: 'n3',
+    title: 'ผลการพิจารณาทุนวิจัยงวดที่ 1',
+    excerpt: 'ประกาศผลการพิจารณาทุนวิจัย...',
+    content: 'รายชื่อผู้ได้รับทุน...',
+    publishedDate: '2024-10-20',
+    isFeatured: false,
+  },
 ];

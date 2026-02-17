@@ -1,48 +1,48 @@
 /* Layout */
 .pageContainer {
-    display: flex;
-    min-height: 100vh;
-    background-color: var(--bg-color);
-    font-family: 'Prompt', sans-serif;
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  font-family: 'Prompt', sans-serif;
 }
 
 .mainContent {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    margin-left: 280px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 280px;
 }
 
 .contentWrapper {
-    padding: 20px;
+  padding: 20px;
 }
 
 .card {
-    background-color: var(--card-bg);
-    padding: 30px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+  background-color: var(--card-bg);
+  padding: 30px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
 }
 
 .pageTitle {
-    font-size: 28px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-    color: var(--text-primary);
+  font-size: 28px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  color: var(--text-primary);
 }
 
 .sectionTitle {
-    margin-top: 20px;
-    color: #555;
+  margin-top: 20px;
+  color: #555;
 }
 
 .missionList {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 @media (max-width: 900px) {
-    .mainContent {
-        margin-left: 0;
-    }
+  .mainContent {
+    margin-left: 0;
+  }
 }

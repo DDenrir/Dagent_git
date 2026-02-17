@@ -1,88 +1,88 @@
 .pageContainer {
-    display: flex;
-    min-height: 100vh;
-    background-color: var(--bg-color);
-    font-family: 'Kanit', sans-serif;
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  font-family: 'Kanit', sans-serif;
 }
 
 .mainContent {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
-    margin-left: 280px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  margin-left: 280px;
 }
 
 .contentWrapper {
-    padding: 30px;
+  padding: 30px;
 }
 
 .pageTitle {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
 }
 
 .researchersGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
 }
 
 .researcherCard {
-    background-color: var(--card-bg);
-    padding: 20px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    border-top: 3px solid var(--primary-color);
-    transition: transform 0.2s;
+  background-color: var(--card-bg);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  border-top: 3px solid var(--primary-color);
+  transition: transform 0.2s;
 }
 
 .researcherCard:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--box-shadow-hover);
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-hover);
 }
 
 .imageWrapper {
-    text-align: center;
-    margin-bottom: 15px;
+  text-align: center;
+  margin-bottom: 15px;
 }
 
 .researcherImage {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: #eee;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    color: #aaa;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #eee;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: #aaa;
 }
 
 .researcherName {
-    font-size: 18px;
-    margin: 0 0 5px 0;
-    text-align: center;
+  font-size: 18px;
+  margin: 0 0 5px 0;
+  text-align: center;
 }
 
 .researcherFaculty {
-    margin: 0;
-    text-align: center;
-    color: #777;
-    font-size: 14px;
+  margin: 0;
+  text-align: center;
+  color: #777;
+  font-size: 14px;
 }
 
 .expertiseSection {
-    margin-top: 15px;
-    padding-top: 10px;
-    border-top: 1px solid #eee;
-    font-size: 13px;
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+  font-size: 13px;
 }
 
 @media (max-width: 900px) {
-    .mainContent {
-        margin-left: 0;
-    }
+  .mainContent {
+    margin-left: 0;
+  }
 }

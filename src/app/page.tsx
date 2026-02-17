@@ -1,20 +1,19 @@
-
-import styles from "./page.module.css";
-import Sidebar from "@/components/Sidebar";
-import Navbar from "@/components/Navbar";
+import styles from './page.module.css';
+import Sidebar from '@/components/Sidebar';
+import Navbar from '@/components/Navbar';
 
 export default function Home() {
   const stats = [
-    { title: "โครงการวิจัยทั้งหมด", value: "2,814", unit: "เรื่อง", icon: "fa-book" },
-    { title: "งานวิจัยตีพิมพ์", value: "1,722", unit: "บทความ", icon: "fa-file-text" },
-    { title: "ทรัพย์สินทางปัญญา", value: "57", unit: "รายการ", icon: "fa-lightbulb-o" },
-    { title: "งบประมาณปี 2568", value: "15.4", unit: "ล้านบาท", icon: "fa-money" },
+    { title: 'โครงการวิจัยทั้งหมด', value: '2,814', unit: 'เรื่อง', icon: 'fa-book' },
+    { title: 'งานวิจัยตีพิมพ์', value: '1,722', unit: 'บทความ', icon: 'fa-file-text' },
+    { title: 'ทรัพย์สินทางปัญญา', value: '57', unit: 'รายการ', icon: 'fa-lightbulb-o' },
+    { title: 'งบประมาณปี 2568', value: '15.4', unit: 'ล้านบาท', icon: 'fa-money' },
   ];
 
   const news = [
-    { title: "ม.ราชภัฏเพชรบูรณ์ จับมือชุมชนพัฒนาสินค้า OTOP สู่ตลาดสากล", date: "17 กุมภาพันธ์ 2569", image: "#" },
-    { title: "นักวิจัยคณะวิทย์ฯ ค้นพบสารสกัดจากพืชท้องถิ่นต้านอนุมูลอิสระ", date: "15 กุมภาพันธ์ 2569", image: "#" },
-    { title: "เปิดรับข้อเสนอโครงการวิจัย ทุนงบประมาณรายได้ ประจำปี 2570", date: "10 กุมภาพันธ์ 2569", image: "#" },
+    { title: 'ม.ราชภัฏเพชรบูรณ์ จับมือชุมชนพัฒนาสินค้า OTOP สู่ตลาดสากล', date: '17 กุมภาพันธ์ 2569', image: '#' },
+    { title: 'นักวิจัยคณะวิทย์ฯ ค้นพบสารสกัดจากพืชท้องถิ่นต้านอนุมูลอิสระ', date: '15 กุมภาพันธ์ 2569', image: '#' },
+    { title: 'เปิดรับข้อเสนอโครงการวิจัย ทุนงบประมาณรายได้ ประจำปี 2570', date: '10 กุมภาพันธ์ 2569', image: '#' },
   ];
 
   return (
@@ -27,9 +26,12 @@ export default function Home() {
         {/* Hero Section */}
         <section className={styles.heroSection}>
           <Navbar /> {/* Navbar inside Hero for transparency effect */}
-
           <div className={styles.heroContent}>
-            <h1 className={styles.heroTitle}>ระบบบริหารจัดการงานวิจัย<br />มหาวิทยาลัยราชภัฏเพชรบูรณ์</h1>
+            <h1 className={styles.heroTitle}>
+              ระบบบริหารจัดการงานวิจัย
+              <br />
+              มหาวิทยาลัยราชภัฏเพชรบูรณ์
+            </h1>
             <p className={styles.heroSubtitle}>Research Management System (RMS) PCRU</p>
           </div>
         </section>
@@ -91,19 +93,20 @@ export default function Home() {
                 </div>
               </div>
               <div className={styles.newsContent}>
-                <div className={styles.newsDate}><i className="fa fa-calendar"></i> {item.date}</div>
+                <div className={styles.newsDate}>
+                  <i className="fa fa-calendar"></i> {item.date}
+                </div>
                 <h3 className={styles.newsTitle}>{item.title}</h3>
-                <a href="#" className={styles.newsReadMore}>อ่านต่อ <i className="fa fa-long-arrow-right"></i></a>
+                <a href="#" className={styles.newsReadMore}>
+                  อ่านต่อ <i className="fa fa-long-arrow-right"></i>
+                </a>
               </div>
             </div>
           ))}
         </div>
 
-        <footer className={styles.footer}>
-          &copy; 2026 สถาบันวิจัยและพัฒนา มหาวิทยาลัยราชภัฏเพชรบูรณ์
-        </footer>
-
-      </main >
-    </div >
+        <footer className={styles.footer}>&copy; 2026 สถาบันวิจัยและพัฒนา มหาวิทยาลัยราชภัฏเพชรบูรณ์</footer>
+      </main>
+    </div>
   );
 }

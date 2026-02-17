@@ -1,200 +1,222 @@
+'use client';
 
-"use client";
-
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import styles from "./page.module.css";
-import Sidebar from "@/components/Sidebar";
-import Navbar from "@/components/Navbar";
+import styles from './page.module.css';
+import Sidebar from '@/components/Sidebar';
+import Navbar from '@/components/Navbar';
 
-import { mockProjects } from "@/data/mock";
+import { mockProjects } from '@/data/mock';
 
 export default function ReportsPage() {
-    const [isMounted, setIsMounted] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
-    // Filter projects for table
-    const topProjects = mockProjects.slice(0, 5);
+  // Filter projects for table
+  const topProjects = mockProjects.slice(0, 5);
 
-    // Aggregate Budget Data from Mock Projects (Example Logic)
-    const budgetByCategory = [
-        { name: 'งบบุคลากร', amount: 3500000 },
-        { name: 'งบดำเนินงาน', amount: 2100000 },
-        { name: 'งบลงทุน', amount: mockProjects.filter(p => p.category === 'งบลงทุน').reduce((acc, p) => acc + p.budgetTotal, 1500000) },
-        { name: 'งบกลาง', amount: 800000 },
-        { name: 'งบเงินอุดหนุน', amount: 450000 },
-    ];
+  // Aggregate Budget Data from Mock Projects (Example Logic)
+  const budgetByCategory = [
+    { name: 'งบบุคลากร', amount: 3500000 },
+    { name: 'งบดำเนินงาน', amount: 2100000 },
+    {
+      name: 'งบลงทุน',
+      amount: mockProjects.filter((p) => p.category === 'งบลงทุน').reduce((acc, p) => acc + p.budgetTotal, 1500000),
+    },
+    { name: 'งบกลาง', amount: 800000 },
+    { name: 'งบเงินอุดหนุน', amount: 450000 },
+  ];
 
-    const budgetByPlan = [
-        { name: 'แผนงานสาธารณสุข', amount: 4200000 },
-        { name: 'แผนงานบริหารทั่วไป', amount: 2800000 },
-        { name: 'แผนงานการศึกษา', amount: 1200000 },
-        { name: 'แผนงานสังคมสงเคราะห์', amount: 600000 },
-    ];
+  const budgetByPlan = [
+    { name: 'แผนงานสาธารณสุข', amount: 4200000 },
+    { name: 'แผนงานบริหารทั่วไป', amount: 2800000 },
+    { name: 'แผนงานการศึกษา', amount: 1200000 },
+    { name: 'แผนงานสังคมสงเคราะห์', amount: 600000 },
+  ];
 
-    if (!isMounted) return null;
+  if (!isMounted) return null;
 
-    return (
-        <div className={styles.pageContainer}>
-            <Sidebar />
+  return (
+    <div className={styles.pageContainer}>
+      <Sidebar />
 
-            <main className={styles.mainContent}>
-                <Navbar />
+      <main className={styles.mainContent}>
+        <Navbar />
 
-                <div className={styles.contentWrapper}>
-                    <div className={styles.pageHeader}>
-                        <h1 className={styles.pageTitle}>ภาพรวมงบประมาณ (Budget Overview)</h1>
-                        <p className={styles.pageSubtitle}>แสดงข้อมูลสรุปงบประมาณประจำปี 2569 ของมหาวิทยาลัยราชภัฏเพชรบูรณ์</p>
-                    </div>
+        <div className={styles.contentWrapper}>
+          <div className={styles.pageHeader}>
+            <h1 className={styles.pageTitle}>ภาพรวมงบประมาณ (Budget Overview)</h1>
+            <p className={styles.pageSubtitle}>แสดงข้อมูลสรุปงบประมาณประจำปี 2569 ของมหาวิทยาลัยราชภัฏเพชรบูรณ์</p>
+          </div>
 
-                    <div className={styles.filterContainer}>
-                        <span>ปีงบประมาณ:</span>
-                        <select className={styles.yearSelect} defaultValue="2569" title="เลือกปีงบประมาณ">
-                            <option value="2569">2569</option>
-                            <option value="2568">2568</option>
-                        </select>
-                    </div>
+          <div className={styles.filterContainer}>
+            <span>ปีงบประมาณ:</span>
+            <select className={styles.yearSelect} defaultValue="2569" title="เลือกปีงบประมาณ">
+              <option value="2569">2569</option>
+              <option value="2568">2568</option>
+            </select>
+          </div>
 
-                    {/* Metrics Cards - Geode Crystal Theme Icons */}
-                    <div className={styles.metricsGrid}>
-                        <div className={styles.metricCard}>
-                            <div className={styles.metricHeader}>
-                                <span className={styles.metricTitle}>งบประมาณทั้งหมด</span>
-                                <div className={`${styles.metricIcon} ${styles.iconPurple}`}> {/* Deep Purple */}
-                                    <i className="fa fa-money"></i>
-                                </div>
-                            </div>
-                            <div className={styles.metricValue}>11,727,000</div>
-                            <div className={styles.metricSubtext}>งบประมาณรายจ่ายประจำปี 2569</div>
-                        </div>
-
-                        <div className={styles.metricCard}>
-                            <div className={styles.metricHeader}>
-                                <span className={styles.metricTitle}>งบลงทุน</span>
-                                <div className={`${styles.metricIcon} ${styles.iconSoftPurple}`}> {/* Soft Purple */}
-                                    <i className="fa fa-line-chart"></i>
-                                </div>
-                            </div>
-                            <div className={styles.metricValue}>3,500,000</div>
-                            <div className={styles.metricSubtext}>คิดเป็น 29.8% ของงบทั้งหมด</div>
-                        </div>
-
-                        <div className={styles.metricCard}>
-                            <div className={styles.metricHeader}>
-                                <span className={styles.metricTitle}>งบดำเนินงาน</span>
-                                <div className={`${styles.metricIcon} ${styles.iconTeal}`}> {/* Teal */}
-                                    <i className="fa fa-cogs"></i>
-                                </div>
-                            </div>
-                            <div className={styles.metricValue}>8,227,000</div>
-                            <div className={styles.metricSubtext}>คิดเป็น 70.2% ของงบทั้งหมด</div>
-                        </div>
-
-                        <div className={styles.metricCard}>
-                            <div className={styles.metricHeader}>
-                                <span className={styles.metricTitle}>จำนวนโครงการ</span>
-                                <div className={`${styles.metricIcon} ${styles.iconPink}`}> {/* Pale Pink */}
-                                    <i className="fa fa-list-alt"></i>
-                                </div>
-                            </div>
-                            <div className={styles.metricValue}>108 รายการ</div>
-                            <div className={styles.metricSubtext}>จำนวนรายการงบประมาณทั้งหมด</div>
-                        </div>
-                    </div>
-
-                    {/* Charts Stats - Geode Crystal Palette */}
-                    <div className={styles.chartsSection}>
-                        <div className={styles.chartCard}>
-                            <div className={styles.chartHeader}>
-                                <h3 className={styles.chartTitle}>การจัดสรรงบประมาณตามหมวดหมู่</h3>
-                                <p className={styles.chartSubtitle}>แสดงสัดส่วนงบประมาณแยกตามหมวดงบประมาณหลัก</p>
-                            </div>
-                            <div className={styles.chartBody}>
-                                <ResponsiveContainer width="100%" height="100%">
-                                    <BarChart
-                                        layout="vertical"
-                                        data={budgetByCategory}
-                                        margin={{ top: 5, right: 30, left: 40, bottom: 5 }}
-                                    >
-                                        <CartesianGrid strokeDasharray="3 3" horizontal={false} />
-                                        <XAxis type="number" hide />
-                                        <YAxis dataKey="name" type="category" width={100} tick={{ fontSize: 12 }} />
-                                        <Tooltip formatter={(value) => new Intl.NumberFormat('th-TH').format(value as number)} />
-                                        <Bar dataKey="amount" fill="#66419F" radius={[0, 4, 4, 0]} barSize={20} name="งบประมาณ" /> {/* Deep Purple */}
-                                    </BarChart>
-                                </ResponsiveContainer>
-                            </div>
-                        </div>
-
-                        <div className={styles.chartCard}>
-                            <div className={styles.chartHeader}>
-                                <h3 className={styles.chartTitle}>การจัดสรรงบประมาณตามแผนงาน</h3>
-                                <p className={styles.chartSubtitle}>แสดงสัดส่วนงบประมาณแยกตามแผนงานหลัก</p>
-                            </div>
-                            <div className={styles.chartBody}>
-                                <ResponsiveContainer width="100%" height="100%">
-                                    <BarChart
-                                        layout="vertical"
-                                        data={budgetByPlan}
-                                        margin={{ top: 5, right: 30, left: 40, bottom: 5 }}
-                                    >
-                                        <CartesianGrid strokeDasharray="3 3" horizontal={false} />
-                                        <XAxis type="number" hide />
-                                        <YAxis dataKey="name" type="category" width={120} tick={{ fontSize: 12 }} />
-                                        <Tooltip formatter={(value) => new Intl.NumberFormat('th-TH').format(value as number)} />
-                                        <Bar dataKey="amount" fill="#358DAA" radius={[0, 4, 4, 0]} barSize={20} name="งบประมาณ" /> {/* Teal */}
-                                    </BarChart>
-                                </ResponsiveContainer>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Projects Table */}
-                    <div className={styles.tableCard}>
-                        <div className={styles.tableHeader}>
-                            <h3 className={styles.tableTitle}>โครงการลงทุนมูลค่าสูงสุด</h3>
-                            <button className={styles.viewAllBtn}>ดูโครงการทั้งหมด <i className="fa fa-arrow-right"></i></button>
-                        </div>
-                        <div className={styles.tableWrapper}>
-                            <table className={styles.projectsTable}>
-                                <thead>
-                                    <tr>
-                                        <th>ชื่อโครงการ</th>
-                                        <th>งบประมาณ (บาท)</th>
-                                        <th>เบิกจ่าย (บาท)</th>
-                                        <th>คงเหลือ (บาท)</th>
-                                        <th>สถานะ</th>
-                                        <th>แผนที่</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {topProjects.map((project) => (
-                                        <tr key={project.id}>
-                                            <td>{project.title}</td>
-                                            <td>{new Intl.NumberFormat('th-TH').format(project.budgetTotal)}</td>
-                                            <td>{new Intl.NumberFormat('th-TH').format(project.budgetDisbursed)}</td>
-                                            <td>{new Intl.NumberFormat('th-TH').format(project.budgetRemaining)}</td>
-                                            <td>
-                                                <span className={`${styles.projectStatus} ${project.status === 'planned' ? styles.statusPlan :
-                                                    project.status === 'ongoing' ? styles.statusOngoing : styles.statusCompleted
-                                                    }`}>
-                                                    {project.status === 'planned' ? 'วางแผน' :
-                                                        project.status === 'ongoing' ? 'ดำเนินการ' : 'เสร็จสิ้น'}
-                                                </span>
-                                            </td>
-                                            <td><button className={styles.mapBtn} title="ดูแผนที่โครงการ"><i className="fa fa-map-marker"></i></button></td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
+          {/* Metrics Cards - Geode Crystal Theme Icons */}
+          <div className={styles.metricsGrid}>
+            <div className={styles.metricCard}>
+              <div className={styles.metricHeader}>
+                <span className={styles.metricTitle}>งบประมาณทั้งหมด</span>
+                <div className={`${styles.metricIcon} ${styles.iconPurple}`}>
+                  {' '}
+                  {/* Deep Purple */}
+                  <i className="fa fa-money"></i>
                 </div>
-            </main>
+              </div>
+              <div className={styles.metricValue}>11,727,000</div>
+              <div className={styles.metricSubtext}>งบประมาณรายจ่ายประจำปี 2569</div>
+            </div>
+
+            <div className={styles.metricCard}>
+              <div className={styles.metricHeader}>
+                <span className={styles.metricTitle}>งบลงทุน</span>
+                <div className={`${styles.metricIcon} ${styles.iconSoftPurple}`}>
+                  {' '}
+                  {/* Soft Purple */}
+                  <i className="fa fa-line-chart"></i>
+                </div>
+              </div>
+              <div className={styles.metricValue}>3,500,000</div>
+              <div className={styles.metricSubtext}>คิดเป็น 29.8% ของงบทั้งหมด</div>
+            </div>
+
+            <div className={styles.metricCard}>
+              <div className={styles.metricHeader}>
+                <span className={styles.metricTitle}>งบดำเนินงาน</span>
+                <div className={`${styles.metricIcon} ${styles.iconTeal}`}>
+                  {' '}
+                  {/* Teal */}
+                  <i className="fa fa-cogs"></i>
+                </div>
+              </div>
+              <div className={styles.metricValue}>8,227,000</div>
+              <div className={styles.metricSubtext}>คิดเป็น 70.2% ของงบทั้งหมด</div>
+            </div>
+
+            <div className={styles.metricCard}>
+              <div className={styles.metricHeader}>
+                <span className={styles.metricTitle}>จำนวนโครงการ</span>
+                <div className={`${styles.metricIcon} ${styles.iconPink}`}>
+                  {' '}
+                  {/* Pale Pink */}
+                  <i className="fa fa-list-alt"></i>
+                </div>
+              </div>
+              <div className={styles.metricValue}>108 รายการ</div>
+              <div className={styles.metricSubtext}>จำนวนรายการงบประมาณทั้งหมด</div>
+            </div>
+          </div>
+
+          {/* Charts Stats - Geode Crystal Palette */}
+          <div className={styles.chartsSection}>
+            <div className={styles.chartCard}>
+              <div className={styles.chartHeader}>
+                <h3 className={styles.chartTitle}>การจัดสรรงบประมาณตามหมวดหมู่</h3>
+                <p className={styles.chartSubtitle}>แสดงสัดส่วนงบประมาณแยกตามหมวดงบประมาณหลัก</p>
+              </div>
+              <div className={styles.chartBody}>
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart
+                    layout="vertical"
+                    data={budgetByCategory}
+                    margin={{ top: 5, right: 30, left: 40, bottom: 5 }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" horizontal={false} />
+                    <XAxis type="number" hide />
+                    <YAxis dataKey="name" type="category" width={100} tick={{ fontSize: 12 }} />
+                    <Tooltip formatter={(value) => new Intl.NumberFormat('th-TH').format(value as number)} />
+                    <Bar dataKey="amount" fill="#66419F" radius={[0, 4, 4, 0]} barSize={20} name="งบประมาณ" />{' '}
+                    {/* Deep Purple */}
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+
+            <div className={styles.chartCard}>
+              <div className={styles.chartHeader}>
+                <h3 className={styles.chartTitle}>การจัดสรรงบประมาณตามแผนงาน</h3>
+                <p className={styles.chartSubtitle}>แสดงสัดส่วนงบประมาณแยกตามแผนงานหลัก</p>
+              </div>
+              <div className={styles.chartBody}>
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart layout="vertical" data={budgetByPlan} margin={{ top: 5, right: 30, left: 40, bottom: 5 }}>
+                    <CartesianGrid strokeDasharray="3 3" horizontal={false} />
+                    <XAxis type="number" hide />
+                    <YAxis dataKey="name" type="category" width={120} tick={{ fontSize: 12 }} />
+                    <Tooltip formatter={(value) => new Intl.NumberFormat('th-TH').format(value as number)} />
+                    <Bar dataKey="amount" fill="#358DAA" radius={[0, 4, 4, 0]} barSize={20} name="งบประมาณ" />{' '}
+                    {/* Teal */}
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+          </div>
+
+          {/* Projects Table */}
+          <div className={styles.tableCard}>
+            <div className={styles.tableHeader}>
+              <h3 className={styles.tableTitle}>โครงการลงทุนมูลค่าสูงสุด</h3>
+              <button className={styles.viewAllBtn}>
+                ดูโครงการทั้งหมด <i className="fa fa-arrow-right"></i>
+              </button>
+            </div>
+            <div className={styles.tableWrapper}>
+              <table className={styles.projectsTable}>
+                <thead>
+                  <tr>
+                    <th>ชื่อโครงการ</th>
+                    <th>งบประมาณ (บาท)</th>
+                    <th>เบิกจ่าย (บาท)</th>
+                    <th>คงเหลือ (บาท)</th>
+                    <th>สถานะ</th>
+                    <th>แผนที่</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {topProjects.map((project) => (
+                    <tr key={project.id}>
+                      <td>{project.title}</td>
+                      <td>{new Intl.NumberFormat('th-TH').format(project.budgetTotal)}</td>
+                      <td>{new Intl.NumberFormat('th-TH').format(project.budgetDisbursed)}</td>
+                      <td>{new Intl.NumberFormat('th-TH').format(project.budgetRemaining)}</td>
+                      <td>
+                        <span
+                          className={`${styles.projectStatus} ${
+                            project.status === 'planned'
+                              ? styles.statusPlan
+                              : project.status === 'ongoing'
+                                ? styles.statusOngoing
+                                : styles.statusCompleted
+                          }`}
+                        >
+                          {project.status === 'planned'
+                            ? 'วางแผน'
+                            : project.status === 'ongoing'
+                              ? 'ดำเนินการ'
+                              : 'เสร็จสิ้น'}
+                        </span>
+                      </td>
+                      <td>
+                        <button className={styles.mapBtn} title="ดูแผนที่โครงการ">
+                          <i className="fa fa-map-marker"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
-    );
+      </main>
+    </div>
+  );
 }
