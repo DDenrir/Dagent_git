@@ -89,7 +89,6 @@
     line-height: 1.42857143;
     text-align: center;
     white-space: nowrap;
-    vertical-align: middle;
     cursor: pointer;
     border: 1px solid transparent;
     border-radius: 3px;
@@ -115,6 +114,11 @@
 
 .links a:hover {
     color: #333;
+}
+
+.homeLink {
+    margin-top: 10px;
+    display: inline-block;
 }
 
 .error {

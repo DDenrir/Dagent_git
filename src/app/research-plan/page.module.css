@@ -164,6 +164,13 @@
     background-color: #d4edda;
 }
 
+.objectivesText {
+    margin: 5px 0 0;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
 @media (max-width: 900px) {
     .mainContent {
         margin-left: 0;

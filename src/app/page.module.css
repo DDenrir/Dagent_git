@@ -15,10 +15,10 @@
   transition: margin-left 0.3s;
 }
 
-/* Hero Section - June Rain Gradient */
+/* Hero Section - Geode Crystal Gradient */
 .heroSection {
-  background: linear-gradient(135deg, #5f5baf 0%, #9a64c5 100%);
-  /* Misty Violet to Rain Purple */
+  background: linear-gradient(120deg, #66419F 0%, #9F95D3 60%, #358DAA 100%);
+  /* Deep Purple -> Soft Purple -> Teal */
   color: white;
   padding: 80px 40px 120px;
   border-radius: 0 0 60px 60px;
@@ -245,6 +245,10 @@
   border-radius: 2px;
 }
 
+.sectionHeaderNews {
+  margin-top: 40px;
+}
+
 /* News Grid */
 .newsGrid {
   display: grid;
@@ -276,6 +280,17 @@
   opacity: 0.5;
 }
 
+.newsImagePlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  background-color: #e9ecef;
+  height: 100%;
+  width: 100%;
+  font-size: 40px;
+}
+
 .newsContent {
   padding: 30px;
 }
@@ -295,6 +310,12 @@
   margin-bottom: 15px;
   line-height: 1.5;
   color: #2d2d42;
+}
+
+.newsReadMore {
+  color: var(--secondary-color);
+  font-size: 14px;
+  font-weight: 500;
 }
 
 /* Footer */

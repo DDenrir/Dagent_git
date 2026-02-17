@@ -70,7 +70,7 @@ export default function LoginPage() {
 
                     <div className={styles.links}>
                         <a href="#">ลืมรหัสผ่าน?</a><br />
-                        <a href="/" className="text-center" style={{ marginTop: '10px', display: 'inline-block' }}>ดูลายละเอียดหน้าแรก</a>
+                        <a href="/" className={`text-center ${styles.homeLink}`}>ดูลายละเอียดหน้าแรก</a>
                     </div>
                 </div>
             </div>

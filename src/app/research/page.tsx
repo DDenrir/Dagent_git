@@ -5,56 +5,29 @@ import { useState } from "react";
 import styles from "./page.module.css";
 import Sidebar from "@/components/Sidebar";
 import Navbar from "@/components/Navbar";
+import { mockProjects, mockUsers } from "@/data/mock";
 
 export default function ResearchProjectsPage() {
     const [filter, setFilter] = useState("ทั้งหมด");
 
-    const projects = [
-        {
-            id: 1,
-            title: "อิทธิพลความโปร่งใสของห่วงโซ่อุปทานและการจัดการความเสี่ยงที่มีผลต่อประสิทธิภาพการดำเนินงานของวิสาหกิจชุมชน",
-            researcher: "วิไลพร วงษ์อินทร์",
-            year: "2569",
-            status: "ดำเนินการ",
-            faculty: "คณะวิทยาการจัดการ"
-        },
-        {
-            id: 2,
-            title: "อิทธิพลของคุณลักษณะผู้นำทางความคิดที่มีต่อการตัดสินใจซื้อสินค้า OTOP ผ่านช่องทางออนไลน์ของผู้บริโภค",
-            researcher: "ศิริพงษ์ เหมมั่น",
-            year: "2569",
-            status: "ดำเนินการ",
-            faculty: "คณะวิทยาการจัดการ"
-        },
-        {
-            id: 3,
-            title: "การพัฒนาเว็บไซต์ประชาสัมพันธ์ผ้าทอไทหล่ม อำเภอหล่มสัก จังหวัดเพชรบูรณ์",
-            researcher: "ศุภรัตน์ แก้วเสริม",
-            year: "2569",
-            status: "ดำเนินการ",
-            faculty: "คณะวิทยาการจัดการ"
-        },
-        {
-            id: 4,
-            title: "รูปแบบการจัดการเรียนรู้เชิงรุกเพื่อส่งเสริมทักษะการคิดวิเคราะห์สำหรับนักศึกษาครู",
-            researcher: "สมชาย ใจดี",
-            year: "2568",
-            status: "เสร็จสิ้น",
-            faculty: "คณะครุศาสตร์"
-        },
-        {
-            id: 5,
-            title: "การศึกษาคุณภาพน้ำในแหล่งน้ำธรรมชาติเพื่อการเกษตรยั่งยืนในเขตอำเภอเมืองเพชรบูรณ์",
-            researcher: "ปราณี มีสุข",
-            year: "2568",
-            status: "เสร็จสิ้น",
-            faculty: "คณะวิทยาศาสตร์และเทคโนโลยี"
-        }
-    ];
+    // Enhance mock projects with researcher names (Join logic)
+    const projectsWithResearcher = mockProjects.map(project => {
+        const researcher = mockUsers.find(u => u.id === project.researcherId);
+        return {
+            ...project,
+            researcherName: researcher?.fullName || "ไม่ระบุ",
+            researcherFaculty: researcher?.faculty || "ไม่ระบุ"
+        };
+    });
 
     const filteredProjects = filter === "ทั้งหมด"
-        ? projects
-        : projects.filter(p => p.status === filter || p.year === filter);
+        ? projectsWithResearcher
+        : projectsWithResearcher.filter(p =>
+            (p.status === 'planned' && filter === 'วางแผน') ||
+            (p.status === 'ongoing' && filter === 'ดำเนินการ') ||
+            (p.status === 'completed' && filter === 'เสร็จสิ้น') ||
+            (p.fiscalYear.toString() === filter)
+        );
 
     return (
         <div className={styles.pageContainer}>
@@ -100,18 +73,21 @@ export default function ResearchProjectsPage() {
                         {filteredProjects.map((project) => (
                             <div key={project.id} className={styles.researchCard}>
                                 <div className={styles.cardHeader}>
-                                    <span className={styles.yearBadge}>ปี {project.year}</span>
-                                    <span className={`${styles.statusBadge} ${project.status === 'ดำเนินการ' ? styles.statusProcessing : styles.statusCompleted}`}>
-                                        {project.status}
+                                    <span className={styles.yearBadge}>ปี {project.fiscalYear}</span>
+                                    <span className={`${styles.statusBadge} ${project.status === 'planned' ? styles.statusPlan :
+                                            project.status === 'ongoing' ? styles.statusProcessing : styles.statusCompleted
+                                        }`}>
+                                        {project.status === 'planned' ? 'วางแผน' :
+                                            project.status === 'ongoing' ? 'ดำเนินการ' : 'เสร็จสิ้น'}
                                     </span>
                                 </div>
                                 <div className={styles.cardBody}>
                                     <h3 className={styles.cardTitle}>{project.title}</h3>
                                     <div className={styles.cardMeta}>
-                                        <i className="fa fa-user"></i> {project.researcher}
+                                        <i className="fa fa-user"></i> {project.researcherName}
                                     </div>
                                     <div className={styles.cardMeta}>
-                                        <i className="fa fa-university"></i> {project.faculty}
+                                        <i className="fa fa-university"></i> {project.researcherFaculty}
                                     </div>
                                 </div>
                                 <div className={styles.cardFooter}>

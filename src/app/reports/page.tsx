@@ -7,6 +7,8 @@ import styles from "./page.module.css";
 import Sidebar from "@/components/Sidebar";
 import Navbar from "@/components/Navbar";
 
+import { mockProjects } from "@/data/mock";
+
 export default function ReportsPage() {
     const [isMounted, setIsMounted] = useState(false);
 
@@ -14,11 +16,14 @@ export default function ReportsPage() {
         setIsMounted(true);
     }, []);
 
-    // Mock Data
+    // Filter projects for table
+    const topProjects = mockProjects.slice(0, 5);
+
+    // Aggregate Budget Data from Mock Projects (Example Logic)
     const budgetByCategory = [
         { name: 'งบบุคลากร', amount: 3500000 },
         { name: 'งบดำเนินงาน', amount: 2100000 },
-        { name: 'งบลงทุน', amount: 1500000 },
+        { name: 'งบลงทุน', amount: mockProjects.filter(p => p.category === 'งบลงทุน').reduce((acc, p) => acc + p.budgetTotal, 1500000) },
         { name: 'งบกลาง', amount: 800000 },
         { name: 'งบเงินอุดหนุน', amount: 450000 },
     ];
@@ -28,14 +33,6 @@ export default function ReportsPage() {
         { name: 'แผนงานบริหารทั่วไป', amount: 2800000 },
         { name: 'แผนงานการศึกษา', amount: 1200000 },
         { name: 'แผนงานสังคมสงเคราะห์', amount: 600000 },
-    ];
-
-    const topProjects = [
-        { id: 1, name: "โครงการพัฒนาศักยภาพนักวิจัยรุ่นใหม่ (Young Researcher Development)", budget: "1,500,000", disbursed: "0", remaining: "1,500,000", status: "วางแผนแล้ว" },
-        { id: 2, name: "โครงการยกระดับผลิตภัณฑ์ชุมชนด้วยนวัตกรรม (OTOP Innovation)", budget: "850,000", disbursed: "0", remaining: "850,000", status: "วางแผนแล้ว" },
-        { id: 3, name: "โครงการจัดการองค์ความรู้เพื่อการพัฒนาท้องถิ่น (KM for Local Deb)", budget: "500,000", disbursed: "0", remaining: "500,000", status: "วางแผนแล้ว" },
-        { id: 4, name: "โครงการวิจัยและพัฒนาพืชสมุนไพรเพื่อสุขภาพ (Herbal R&D)", budget: "450,000", disbursed: "0", remaining: "450,000", status: "วางแผนแล้ว" },
-        { id: 5, name: "โครงการส่งเสริมการท่องเที่ยวเชิงวัฒนธรรม (Cultural Tourism)", budget: "300,000", disbursed: "0", remaining: "300,000", status: "วางแผนแล้ว" },
     ];
 
     if (!isMounted) return null;
@@ -55,18 +52,18 @@ export default function ReportsPage() {
 
                     <div className={styles.filterContainer}>
                         <span>ปีงบประมาณ:</span>
-                        <select className={styles.yearSelect} defaultValue="2569">
+                        <select className={styles.yearSelect} defaultValue="2569" title="เลือกปีงบประมาณ">
                             <option value="2569">2569</option>
                             <option value="2568">2568</option>
                         </select>
                     </div>
 
-                    {/* Metrics Cards - June Rain Theme Icons */}
+                    {/* Metrics Cards - Geode Crystal Theme Icons */}
                     <div className={styles.metricsGrid}>
                         <div className={styles.metricCard}>
                             <div className={styles.metricHeader}>
                                 <span className={styles.metricTitle}>งบประมาณทั้งหมด</span>
-                                <div className={`${styles.metricIcon}`} style={{ backgroundColor: '#5f5baf' }}> {/* Misty Violet */}
+                                <div className={`${styles.metricIcon} ${styles.iconPurple}`}> {/* Deep Purple */}
                                     <i className="fa fa-money"></i>
                                 </div>
                             </div>
@@ -77,7 +74,7 @@ export default function ReportsPage() {
                         <div className={styles.metricCard}>
                             <div className={styles.metricHeader}>
                                 <span className={styles.metricTitle}>งบลงทุน</span>
-                                <div className={`${styles.metricIcon}`} style={{ backgroundColor: '#9a64c5' }}> {/* Rain Purple */}
+                                <div className={`${styles.metricIcon} ${styles.iconSoftPurple}`}> {/* Soft Purple */}
                                     <i className="fa fa-line-chart"></i>
                                 </div>
                             </div>
@@ -88,7 +85,7 @@ export default function ReportsPage() {
                         <div className={styles.metricCard}>
                             <div className={styles.metricHeader}>
                                 <span className={styles.metricTitle}>งบดำเนินงาน</span>
-                                <div className={`${styles.metricIcon}`} style={{ backgroundColor: '#568de4', color: 'white' }}> {/* Rainy Blue */}
+                                <div className={`${styles.metricIcon} ${styles.iconTeal}`}> {/* Teal */}
                                     <i className="fa fa-cogs"></i>
                                 </div>
                             </div>
@@ -99,7 +96,7 @@ export default function ReportsPage() {
                         <div className={styles.metricCard}>
                             <div className={styles.metricHeader}>
                                 <span className={styles.metricTitle}>จำนวนโครงการ</span>
-                                <div className={`${styles.metricIcon}`} style={{ backgroundColor: '#ba9fe1', color: 'white' }}> {/* Light Purple/Lilac */}
+                                <div className={`${styles.metricIcon} ${styles.iconPink}`}> {/* Pale Pink */}
                                     <i className="fa fa-list-alt"></i>
                                 </div>
                             </div>
@@ -108,7 +105,7 @@ export default function ReportsPage() {
                         </div>
                     </div>
 
-                    {/* Charts Stats - June Rain Palette */}
+                    {/* Charts Stats - Geode Crystal Palette */}
                     <div className={styles.chartsSection}>
                         <div className={styles.chartCard}>
                             <div className={styles.chartHeader}>
@@ -126,7 +123,7 @@ export default function ReportsPage() {
                                         <XAxis type="number" hide />
                                         <YAxis dataKey="name" type="category" width={100} tick={{ fontSize: 12 }} />
                                         <Tooltip formatter={(value) => new Intl.NumberFormat('th-TH').format(value as number)} />
-                                        <Bar dataKey="amount" fill="#5f5baf" radius={[0, 4, 4, 0]} barSize={20} name="งบประมาณ" /> {/* Misty Violet */}
+                                        <Bar dataKey="amount" fill="#66419F" radius={[0, 4, 4, 0]} barSize={20} name="งบประมาณ" /> {/* Deep Purple */}
                                     </BarChart>
                                 </ResponsiveContainer>
                             </div>
@@ -148,7 +145,7 @@ export default function ReportsPage() {
                                         <XAxis type="number" hide />
                                         <YAxis dataKey="name" type="category" width={120} tick={{ fontSize: 12 }} />
                                         <Tooltip formatter={(value) => new Intl.NumberFormat('th-TH').format(value as number)} />
-                                        <Bar dataKey="amount" fill="#568de4" radius={[0, 4, 4, 0]} barSize={20} name="งบประมาณ" /> {/* Rainy Blue */}
+                                        <Bar dataKey="amount" fill="#358DAA" radius={[0, 4, 4, 0]} barSize={20} name="งบประมาณ" /> {/* Teal */}
                                     </BarChart>
                                 </ResponsiveContainer>
                             </div>
@@ -176,12 +173,19 @@ export default function ReportsPage() {
                                 <tbody>
                                     {topProjects.map((project) => (
                                         <tr key={project.id}>
-                                            <td>{project.name}</td>
-                                            <td>{project.budget}</td>
-                                            <td>{project.disbursed}</td>
-                                            <td>{project.remaining}</td>
-                                            <td><span className={`${styles.projectStatus} ${styles.statusPlan}`}>{project.status}</span></td>
-                                            <td><button style={{ border: 'none', background: 'none', cursor: 'pointer', color: '#999' }}><i className="fa fa-map-marker"></i></button></td>
+                                            <td>{project.title}</td>
+                                            <td>{new Intl.NumberFormat('th-TH').format(project.budgetTotal)}</td>
+                                            <td>{new Intl.NumberFormat('th-TH').format(project.budgetDisbursed)}</td>
+                                            <td>{new Intl.NumberFormat('th-TH').format(project.budgetRemaining)}</td>
+                                            <td>
+                                                <span className={`${styles.projectStatus} ${project.status === 'planned' ? styles.statusPlan :
+                                                    project.status === 'ongoing' ? styles.statusOngoing : styles.statusCompleted
+                                                    }`}>
+                                                    {project.status === 'planned' ? 'วางแผน' :
+                                                        project.status === 'ongoing' ? 'ดำเนินการ' : 'เสร็จสิ้น'}
+                                                </span>
+                                            </td>
+                                            <td><button className={styles.mapBtn} title="ดูแผนที่โครงการ"><i className="fa fa-map-marker"></i></button></td>
                                         </tr>
                                     ))}
                                 </tbody>

@@ -108,20 +108,21 @@
     font-size: 18px;
 }
 
-.iconBlue {
-    background-color: #2196F3;
-}
-
-.iconGreen {
-    background-color: #4CAF50;
-}
-
-.iconOrange {
-    background-color: #FF9800;
-}
-
 .iconPurple {
-    background-color: #9C27B0;
+    background-color: #66419F;
+}
+
+.iconSoftPurple {
+    background-color: #9F95D3;
+}
+
+.iconTeal {
+    background-color: #358DAA;
+}
+
+.iconPink {
+    background-color: #ECD2E5;
+    color: #66419F;
 }
 
 .metricValue {
@@ -249,6 +250,27 @@
 .statusPlan {
     background-color: #e3f2fd;
     color: #1565c0;
+}
+
+.statusOngoing {
+    background-color: #FFF3E0;
+    color: #F57C00;
+}
+
+.statusCompleted {
+    background-color: #E8F5E9;
+    color: #388E3C;
+}
+
+.mapBtn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #999;
+}
+
+.mapBtn:hover {
+    color: var(--primary-color);
 }
 
 @media (max-width: 900px) {

@@ -75,7 +75,7 @@ export default function ResearchPlansPage() {
 
                                     <div className={styles.detailItem}>
                                         <span className={styles.detailLabel}>วัตถุประสงค์หลัก</span>
-                                        <p style={{ margin: '5px 0 0', color: '#555', fontSize: '14px', lineHeight: '1.5' }}>
+                                        <p className={styles.objectivesText}>
                                             {plan.objectives}
                                         </p>
                                     </div>

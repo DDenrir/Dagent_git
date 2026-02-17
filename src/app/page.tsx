@@ -81,17 +81,19 @@ export default function Home() {
         </div>
 
         {/* Lateast News */}
-        <h2 className={styles.sectionHeader} style={{ marginTop: '40px' }}>ข่าวประชาสัมพันธ์</h2>
+        <h2 className={`${styles.sectionHeader} ${styles.sectionHeaderNews}`}>ข่าวประชาสัมพันธ์</h2>
         <div className={styles.newsGrid}>
           {news.map((item, index) => (
             <div key={index} className={styles.newsCard}>
-              <div className={styles.newsImage} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', backgroundColor: '#e9ecef' }}>
-                <i className="fa fa-image" style={{ fontSize: '40px' }}></i>
+              <div className={styles.newsImage}>
+                <div className={styles.newsImagePlaceholder}>
+                  <i className="fa fa-image"></i>
+                </div>
               </div>
               <div className={styles.newsContent}>
                 <div className={styles.newsDate}><i className="fa fa-calendar"></i> {item.date}</div>
                 <h3 className={styles.newsTitle}>{item.title}</h3>
-                <a href="#" style={{ color: '#008455', fontSize: '14px', fontWeight: 500 }}>อ่านต่อ <i className="fa fa-long-arrow-right"></i></a>
+                <a href="#" className={styles.newsReadMore}>อ่านต่อ <i className="fa fa-long-arrow-right"></i></a>
               </div>
             </div>
           ))}
@@ -101,7 +103,7 @@ export default function Home() {
           &copy; 2026 สถาบันวิจัยและพัฒนา มหาวิทยาลัยราชภัฏเพชรบูรณ์
         </footer>
 
-      </main>
-    </div>
+      </main >
+    </div >
   );
 }
